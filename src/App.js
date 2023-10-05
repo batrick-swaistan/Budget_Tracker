@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {AppProvider}  from '../src/Context/AppContext';
+import Budget from './components/Budget';
+import ExpenseTotal from './components/ExpenseTotal';
+import ExpenseList from './components/ExpenseList';
+import RemainingBudget from './components/Remaining';
+import AddExpenseForm from './components/AddExpense';
+import Footer from './components/Footer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<AppProvider>
+			<div className='container'>
+				<h1 className='mt-3 text-center pb-3'>My Budget Planner</h1>
+				<div className='row mt-3'>
+					<div className='col-sm'>
+						<Budget />
+					</div>
+					<div className='col-sm'>
+						<RemainingBudget />
+					</div>
+					<div className='col-sm'>
+						<ExpenseTotal />
+					</div>
+				</div>
+				<h3 className='mt-3'>Expenses</h3>
+				<div className='row '>
+					<div className='col-sm'>
+						<ExpenseList />
+					</div>
+				</div>
+				<h3 className='mt-3'>Add Expense</h3>
+				<div className='row mt-3'>
+					<div className='col-sm'>
+						<AddExpenseForm />
+					</div>
+				</div>
+
+        <Footer />
+			</div>
+		</AppProvider>
+	);
+};
 
 export default App;
